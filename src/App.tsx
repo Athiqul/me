@@ -49,7 +49,7 @@ const PortfolioHome = () => (
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/me">
       <Routes>
         <Route path="/" element={<PortfolioHome />} />
         <Route path="/resume" element={<ResumeViewer />} />

@@ -11,7 +11,7 @@ const ResumeViewer = () => {
   const resumeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetch('/resume.md')
+    fetch('resume.md')
       .then((res) => res.text())
       .then((text) => setMarkdown(text));
   }, []);
