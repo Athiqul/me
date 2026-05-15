@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Award, BookOpen } from 'lucide-react';
+import { GraduationCap, Award } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 
 const EducationCard = ({ degree, school, period, achievement, index }: { degree: string, school: string, period: string, achievement?: string, index: number }) => (

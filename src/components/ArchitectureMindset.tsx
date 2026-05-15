@@ -1,7 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Zap, Database, Globe } from 'lucide-react';
-import SectionHeader from './SectionHeader';
 
 const MindsetCard = ({ title, description, icon: Icon, index }: { title: string, description: string, icon: any, index: number }) => (
   <motion.div

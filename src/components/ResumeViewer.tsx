@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Download, ChevronLeft, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -24,7 +24,7 @@ const ResumeViewer = () => {
     
     // Improved options for better text rendering and layout preservation
     const opt = {
-      margin: [15, 15, 15, 15],
+      margin: [15, 15, 15, 15] as [number, number, number, number],
       filename: 'Athiqul_Hasan_Momin_Resume.pdf',
       image: { type: 'jpeg', quality: 1 },
       html2canvas: { 

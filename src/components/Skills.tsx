@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Server, Database, Cloud, Shield, Terminal, Layout } from 'lucide-react';
 import SectionHeader from './SectionHeader';

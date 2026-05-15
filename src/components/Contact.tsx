@@ -1,7 +1,6 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Send, Phone, MapPin, ExternalLink } from 'lucide-react';
-import { FaLinkedin, FaGithub } from "react-icons/fa6";
+import { Mail, Send, MapPin, ExternalLink } from 'lucide-react';
+import { FaLinkedin } from "react-icons/fa6";
 import SectionHeader from './SectionHeader';
 
 const ContactInfo = ({ icon: Icon, label, value, href }: { icon: any, label: string, value: string, href?: string }) => (
