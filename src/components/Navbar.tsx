@@ -34,12 +34,12 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { name: 'Architecture', href: '/#about' },
-    { name: 'Expertise', href: '/#skills' },
-    { name: 'Experience', href: '/#experience' },
-    { name: 'Education', href: '/#education' },
-    { name: 'Projects', href: '/#projects' },
-    { name: 'Contact', href: '/#contact' },
+    { name: 'Architecture', href: '#about' },
+    { name: 'Expertise', href: '#skills' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Education', href: '#education' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (

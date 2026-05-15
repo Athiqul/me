@@ -31,10 +31,10 @@ const Footer = () => {
         <div>
           <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--text)] mb-6">Navigation</h4>
           <ul className="space-y-4 text-sm font-medium text-[var(--text-muted)]">
-            <li><a href="/#about" className="hover:text-primary transition-colors">Architecture</a></li>
-            <li><a href="/#skills" className="hover:text-primary transition-colors">Expertise</a></li>
-            <li><a href="/#experience" className="hover:text-primary transition-colors">Journey</a></li>
-            <li><a href="/#projects" className="hover:text-primary transition-colors">Portfolio</a></li>
+            <li><a href="#about" className="hover:text-primary transition-colors">Architecture</a></li>
+            <li><a href="#skills" className="hover:text-primary transition-colors">Expertise</a></li>
+            <li><a href="#experience" className="hover:text-primary transition-colors">Journey</a></li>
+            <li><a href="#projects" className="hover:text-primary transition-colors">Portfolio</a></li>
           </ul>
         </div>
 
@@ -43,7 +43,7 @@ const Footer = () => {
           <ul className="space-y-4 text-sm font-medium text-[var(--text-muted)]">
             <li><Link to="/resume" className="hover:text-primary transition-colors">Professional Resume</Link></li>
             <li><a href="https://github.com/Athiqul" className="hover:text-primary transition-colors">Engineering Logs</a></li>
-            <li><a href="/#contact" className="hover:text-primary transition-colors">Contact Service</a></li>
+            <li><a href="#contact" className="hover:text-primary transition-colors">Contact Service</a></li>
           </ul>
         </div>
       </div>
