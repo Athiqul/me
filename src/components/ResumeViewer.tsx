@@ -36,7 +36,7 @@ const ResumeViewer = () => {
         windowWidth: 1000 
       },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
-      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+      pagebreak: { mode: 'css' }
     };
 
     try {
@@ -110,33 +110,36 @@ const ResumeViewer = () => {
         .pdf-typography h2 {
           font-size: 18px !important;
           font-weight: 700 !important;
-          margin-top: 24px !important;
-          margin-bottom: 12px !important;
+          margin-top: 18px !important; /* Reduced from 24px */
+          margin-bottom: 8px !important; /* Reduced from 12px */
           border-bottom: 2px solid #eee !important;
           padding-bottom: 4px !important;
           text-transform: uppercase !important;
           letter-spacing: 0.05em !important;
           color: #1a1a1a !important;
+          page-break-after: avoid !important; /* Keep with next element */
         }
         
         .pdf-typography h3 {
           font-size: 16px !important;
           font-weight: 700 !important;
-          margin-top: 16px !important;
-          margin-bottom: 6px !important;
+          margin-top: 14px !important; /* Reduced from 16px */
+          margin-bottom: 4px !important; /* Reduced from 6px */
           color: #333 !important;
+          page-break-after: avoid !important; /* Keep with next element */
         }
         
         .pdf-typography p {
-          font-size: 14px !important;
-          margin-bottom: 10px !important;
+          font-size: 13.5px !important;
+          margin-bottom: 8px !important;
           color: #444 !important;
         }
         
         .pdf-typography ul {
           list-style-type: disc !important;
           margin-left: 20px !important;
-          margin-bottom: 16px !important;
+          margin-bottom: 12px !important;
+          page-break-inside: avoid !important; /* Try to keep list together */
         }
         
         .pdf-typography li {
