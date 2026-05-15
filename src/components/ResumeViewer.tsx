@@ -22,22 +22,22 @@ const ResumeViewer = () => {
 
     const element = resumeRef.current;
     
-    // Improved options for better text rendering and layout preservation
-    const opt = {
+    // Using 'any' to bypass strict library types that conflict with literal inference
+    const opt: any = {
       margin: [15, 15, 15, 15],
       filename: 'Athiqul_Hasan_Momin_Resume.pdf',
       image: { type: 'jpeg', quality: 1 },
       html2canvas: { 
-        scale: 4, // Higher scale for extreme clarity
+        scale: 4, 
         useCORS: true, 
         letterRendering: true,
         scrollX: 0,
         scrollY: 0,
-        windowWidth: 1000 // Fixed width for consistent layout
+        windowWidth: 1000 
       },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
       pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
-    } as const;
+    };
 
     try {
       await html2pdf().set(opt).from(element).save();
