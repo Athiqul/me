@@ -72,16 +72,16 @@ const ProjectCard = ({ title, description, image, tech, architecture, github, li
 const Projects = () => {
   const projects = [
     {
-      title: 'BBS CMS Platform',
-      description: 'A highly scalable multi-tenant WordPress management system. Designed to handle thousands of isolated instances with unified provisioning and centralized control.',
+      title: 'BBS CMS',
+      description: 'Multi-tenant WordPress provisioning and management platform engineered for tenant isolation, scalable deployment workflows, and centralized resource management.',
       image: '/projects/analytics.jpg',
       tech: ['Laravel', 'AWS', 'Multi-Tenancy', 'PHP'],
       architecture: 'Isolated database strategy with dynamic routing and high-availability AWS RDS integration.',
       github: 'https://github.com/Athiqul',
     },
     {
-      title: 'YELL PAY Infrastructure',
-      description: 'Financial transaction bridge supporting secure payments and real-time processing. Focused on atomicity, data integrity, and fraud prevention.',
+      title: 'YELL PAY',
+      description: 'Payment processing platform focused on secure transaction handling, API integrations, and financial data integrity.',
       image: '/projects/fintech.jpg',
       tech: ['PHP', 'MySQL', 'API Bridges', 'Redis'],
       architecture: 'Distributed queue system for handling asynchronous transaction auditing and reporting.',
@@ -89,7 +89,7 @@ const Projects = () => {
     },
     {
       title: '10crmBank Pro',
-      description: 'Mobile financial ecosystem with over 10k downloads. Features SMS-driven game coin management and peer-to-peer balance settlement.',
+      description: 'Fintech platform with 10k+ downloads supporting SMS-based transactions, wallet operations, and real-time ledger synchronization.',
       image: '/projects/gateway.jpg',
       tech: ['CodeIgniter 4', 'MySQL', 'REST API'],
       architecture: 'Stateless API design with robust token-based authentication and real-time ledger synchronization.',
@@ -97,18 +97,18 @@ const Projects = () => {
     },
     {
       title: 'School Management System',
-      description: 'Enterprise resource planning system for educational institutions. Manages student lifecycles, payroll, and academic reporting.',
+      description: 'ERP platform designed for managing student lifecycles, payroll, attendance, and academic operations through modular backend services.',
       image: '/projects/analytics.jpg',
       tech: ['Laravel', 'MySQL', 'Bootstrap'],
       architecture: 'Modular monolithic architecture with role-based access control and high-performance reporting modules.',
       github: 'https://github.com/Athiqul',
     },
     {
-      title: 'Enterprise SMS Service',
-      description: 'High-throughput SMS gateway for corporate alerts and marketing campaigns. Built to handle millions of requests monthly.',
+      title: 'Owlet Framework',
+      description: 'Private PHP framework powering large-scale CMS ecosystems with reusable modules, tenant management, and scalable architecture support.',
       image: '/projects/gateway.jpg',
-      tech: ['Laravel', 'Redis', 'API Integrations'],
-      architecture: 'Scalable worker architecture using Redis-backed job queues and automatic failover.',
+      tech: ['PHP', 'Architecture', 'Framework Dev'],
+      architecture: 'Custom modular foundation enabling rapid deployment of highly customized CMS environments.',
       github: 'https://github.com/Athiqul',
     },
   ];

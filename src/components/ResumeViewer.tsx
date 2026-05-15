@@ -1,52 +1,42 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Download, ChevronLeft, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-// @ts-ignore
-import html2pdf from 'html2pdf.js';
+import { usePDF } from '@react-pdf/renderer';
+import ResumePDF from './ResumePDF';
+import { resumeData } from '../data/resumeData';
 
 const ResumeViewer = () => {
   const [markdown, setMarkdown] = useState('');
-  const [isDownloading, setIsDownloading] = useState(false);
-  const resumeRef = useRef<HTMLDivElement>(null);
+  const [isReady, setIsReady] = useState(false);
+
+  // Memoize the document to prevent unnecessary re-renders of the PDF engine
+  const pdfDocument = useMemo(() => <ResumePDF data={resumeData} />, []);
+  
+  // Hook for generating the PDF
+  const [instance] = usePDF({ document: pdfDocument });
 
   useEffect(() => {
     fetch('resume.md')
       .then((res) => res.text())
       .then((text) => setMarkdown(text));
+    
+    // Ensure we are on client side
+    setIsReady(true);
   }, []);
 
-  const handleDownloadPDF = async () => {
-    if (!resumeRef.current) return;
-    setIsDownloading(true);
-
-    const element = resumeRef.current;
-    
-    // Using 'any' to bypass strict library types that conflict with literal inference
-    const opt: any = {
-      margin: [15, 15, 15, 15],
-      filename: 'Athiqul_Hasan_Momin_Resume.pdf',
-      image: { type: 'jpeg', quality: 1 },
-      html2canvas: { 
-        scale: 4, 
-        useCORS: true, 
-        letterRendering: true,
-        scrollX: 0,
-        scrollY: 0,
-        windowWidth: 1000 
-      },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
-      pagebreak: { mode: 'css' }
-    };
-
-    try {
-      await html2pdf().set(opt).from(element).save();
-    } catch (error) {
-      console.error('PDF Generation Error:', error);
-    } finally {
-      setIsDownloading(false);
+  const handleDownload = () => {
+    if (instance.url) {
+      const link = document.createElement('a');
+      link.href = instance.url;
+      link.download = 'Athiqul_Hasan_Momin_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
   };
+
+  if (!isReady) return null;
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-[#0a0a0c] pt-24 pb-12 px-4 sm:px-6 transition-colors duration-300">
@@ -57,124 +47,101 @@ const ResumeViewer = () => {
             <ChevronLeft size={18} /> Back to Portfolio
           </Link>
           <div className="flex gap-3">
-            <button 
-              onClick={handleDownloadPDF} 
-              disabled={isDownloading}
+            <button
+              onClick={handleDownload}
+              disabled={instance.loading || !!instance.error}
               className="btn-primary py-2 flex items-center gap-2 shadow-lg hover:shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isDownloading ? (
+              {instance.loading ? (
                 <>
-                  <Loader2 size={18} className="animate-spin" /> Generating...
+                  <Loader2 size={18} className="animate-spin" /> Preparing...
                 </>
               ) : (
                 <>
-                  <Download size={18} /> Download Resume (PDF)
+                  <Download size={18} /> Download High-Quality PDF
                 </>
               )}
             </button>
           </div>
         </div>
 
-        {/* Resume Content Container */}
-        <div className="shadow-2xl rounded-xl overflow-hidden border border-gray-200 dark:border-white/5">
-          <div 
-            ref={resumeRef}
-            className="bg-white p-12 md:p-20 resume-pdf-content text-black"
-          >
-            {/* We use a standard div structure instead of prose to avoid Tailwind layout bugs in PDF conversion */}
-            <div className="pdf-typography">
-              <ReactMarkdown>{markdown}</ReactMarkdown>
-            </div>
+        {instance.error && (
+          <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 text-red-500 rounded-xl text-sm">
+            Failed to generate PDF. Please try again later.
+          </div>
+        )}
+
+        {/* Resume Content Container (Markdown View) */}
+        <div className="shadow-2xl rounded-xl overflow-hidden border border-gray-200 dark:border-white/5 bg-white p-12 md:p-20 text-black">
+          <div className="prose-custom">
+            <ReactMarkdown>{markdown}</ReactMarkdown>
           </div>
         </div>
       </div>
 
       <style>{`
-        /* PDF Specific Typography - Hand-crafted for perfect PDF exports */
-        .pdf-typography {
-          font-family: 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif !important;
-          color: #000 !important;
-          line-height: 1.6 !important; /* Increased line height for readability */
+        .prose-custom {
+          font-family: 'Inter', sans-serif;
+          color: #1a1a1a;
+          line-height: 1.6;
         }
-        
-        .pdf-typography h1 {
-          font-size: 32px !important;
-          font-weight: 800 !important;
-          text-align: center !important;
-          margin-bottom: 8px !important;
-          text-transform: uppercase !important;
-          letter-spacing: -0.02em !important;
-          line-height: 1.2 !important;
+        .prose-custom h1 {
+          font-size: 2.5rem;
+          font-weight: 800;
+          text-align: center;
+          margin-bottom: 0.5rem;
+          text-transform: uppercase;
+          letter-spacing: -0.02em;
         }
-        
-        .pdf-typography h2 {
-          font-size: 18px !important;
-          font-weight: 700 !important;
-          margin-top: 18px !important; /* Reduced from 24px */
-          margin-bottom: 8px !important; /* Reduced from 12px */
-          border-bottom: 2px solid #eee !important;
-          padding-bottom: 4px !important;
-          text-transform: uppercase !important;
-          letter-spacing: 0.05em !important;
-          color: #1a1a1a !important;
-          page-break-after: avoid !important; /* Keep with next element */
+        .prose-custom p:first-of-type {
+          text-align: center;
+          font-weight: 600;
+          color: #3b82f6;
+          margin-bottom: 2rem;
         }
-        
-        .pdf-typography h3 {
-          font-size: 16px !important;
-          font-weight: 700 !important;
-          margin-top: 14px !important; /* Reduced from 16px */
-          margin-bottom: 4px !important; /* Reduced from 6px */
-          color: #333 !important;
-          page-break-after: avoid !important; /* Keep with next element */
+        .prose-custom h2 {
+          font-size: 1.25rem;
+          font-weight: 700;
+          margin-top: 2.5rem;
+          margin-bottom: 1rem;
+          border-bottom: 2px solid #f3f4f6;
+          padding-bottom: 0.5rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
         }
-        
-        .pdf-typography p {
-          font-size: 13.5px !important;
-          margin-bottom: 8px !important;
-          color: #444 !important;
+        .prose-custom h3 {
+          font-size: 1.1rem;
+          font-weight: 700;
+          margin-top: 1.5rem;
+          margin-bottom: 0.5rem;
         }
-        
-        .pdf-typography ul {
-          list-style-type: disc !important;
-          margin-left: 20px !important;
-          margin-bottom: 12px !important;
-          page-break-inside: avoid !important; /* Try to keep list together */
+        .prose-custom p {
+          margin-bottom: 1rem;
+          color: #4b5563;
         }
-        
-        .pdf-typography li {
-          font-size: 13.5px !important;
-          margin-bottom: 6px !important;
-          color: #444 !important;
+        .prose-custom ul {
+          list-style-type: disc;
+          margin-left: 1.5rem;
+          margin-bottom: 1.5rem;
         }
-        
-        .pdf-typography hr {
-          border: none !important;
-          border-top: 1px solid #ddd !important;
-          margin: 20px 0 !important;
+        .prose-custom li {
+          margin-bottom: 0.5rem;
+          color: #4b5563;
         }
-        
-        .pdf-typography strong {
-          font-weight: 700 !important;
-          color: #000 !important;
+        .prose-custom hr {
+          margin: 2rem 0;
+          border: none;
+          border-top: 1px solid #f3f4f6;
         }
-        
-        .pdf-typography a {
-          color: #2563eb !important;
-          text-decoration: none !important;
+        .prose-custom strong {
+          color: #111827;
         }
-
-        /* Ensure clean background in dark mode for the PDF container */
-        .dark .resume-pdf-content {
-          background-color: white !important;
-          color: black !important;
+        .prose-custom a {
+          color: #3b82f6;
+          text-decoration: none;
         }
-        
-        /* Force specific widths during generation to prevent compression */
-        @media screen and (max-width: 768px) {
-          .resume-pdf-content {
-            padding: 40px !important;
-          }
+        .prose-custom a:hover {
+          text-decoration: underline;
         }
       `}</style>
     </div>

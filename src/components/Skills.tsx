@@ -38,36 +38,37 @@ const SkillCard = ({ title, icon: Icon, skills, index }: { title: string, icon: 
 const Skills = () => {
   const categories = [
     {
-      title: 'Backend Core',
+      title: 'Backend Engineering',
       icon: Terminal,
-      skills: ['PHP', 'Laravel', 'CodeIgniter 4', 'Symphony', 'REST APIs'],
+      skills: ['PHP', 'Laravel', 'CodeIgniter 4', 'RESTful APIs', 'OAuth 2.0', 'Multi-Tenancy', 'System Design', 'Distributed Systems'],
     },
     {
-      title: 'Architecture',
-      icon: Server,
-      skills: ['Microservices', 'Multi-Tenancy', 'CQRS', 'Event-Driven', 'System Design'],
-    },
-    {
-      title: 'Cloud & DevOps',
+      title: 'Cloud & Infrastructure',
       icon: Cloud,
-      skills: ['AWS (EC2, RDS, S3)', 'ALB', 'CI/CD', 'Docker', 'Linux Admin'],
+      skills: ['AWS (EC2, RDS, S3, ALB, CloudFront)', 'SES/SNS/SQS', 'Linux Server', 'CI/CD Pipelines'],
     },
     {
-      title: 'Database Systems',
+      title: 'Databases',
       icon: Database,
-      skills: ['MySQL', 'Redis', 'Elasticsearch', 'Query Optimization', 'Database Design'],
+      skills: ['MySQL', 'PostgreSQL', 'NoSQL', 'Database Design', 'Query Optimization'],
     },
     {
-      title: 'Frontend Bridge',
+      title: 'Frontend',
       icon: Layout,
-      skills: ['React.js', 'TypeScript', 'Tailwind CSS', 'Next.js', 'Framer Motion'],
+      skills: ['React.js', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'Bootstrap'],
     },
     {
-      title: 'Integrations & Auth',
+      title: 'Engineering Practices',
+      icon: Server,
+      skills: ['Async Processing', 'Queue Systems', 'SOLID Principles', 'Clean Architecture', 'TDD', 'Agile'],
+    },
+    {
+      title: 'Architecture & DevOps',
       icon: Shield,
-      skills: ['Google OAuth', 'JWT', 'API Bridges', 'Third-party SDKs', 'Secure Payments'],
+      skills: ['Webhooks', 'DRY Principles', 'AI-Assisted Dev', 'Deployment Workflows'],
     },
   ];
+
 
   return (
     <section id="skills" className="section-padding container-wide">

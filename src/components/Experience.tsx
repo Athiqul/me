@@ -58,12 +58,12 @@ const Experience = () => {
       period: 'Sep 2024 – Present',
       location: 'Dhaka, Bangladesh',
       achievements: [
-        'Architected BBS CMS multi-tenant platform for WordPress management.',
-        'Engineered AWS cloud solutions with highly available RDS and S3 integration.',
-        'Implemented GDN Owlet Framework core backend components.',
-        'Developed API bridge systems for seamless third-party service integration.',
-        'Led OAuth 2.0 implementations for secure cross-platform authentication.',
-        'Contributed to YELL PAY backend infrastructure for secure processing.'
+        'Architecting and developing advanced backend solutions and system designs using PHP and Laravel.',
+        'Leading the backend architecture for BBS CMS, a highly scalable multi-tenant WordPress provisioning and management platform.',
+        'Architecting modular backend services for a scalable School Management ERP system supporting academic, payroll, and administrative workflows.',
+        'Provisioning resilient cloud environments on AWS (EC2, ALB, RDS, S3, CloudFront, SES, SNS, SQS).',
+        'Implementing API bridge systems and OAuth 2.0 for secure third-party integrations.',
+        'Leading the YELL PAY backend infrastructure for secure payment processing.'
       ],
     },
     {
@@ -72,11 +72,10 @@ const Experience = () => {
       period: 'Sep 2022 – Aug 2024',
       location: 'Dhaka, Bangladesh',
       achievements: [
-        'Developed 10crmBank financial backend with real-time transaction processing.',
-        'Architected AboveBD service platform infrastructure using Laravel.',
-        'Engineered high-throughput SMS gateway systems with queue management.',
-        'Optimized complex SQL queries reducing API latency by 40%.',
-        'Built enterprise-grade REST APIs for high-traffic mobile applications.'
+        'Engineered complex web systems including 10crmBank and AboveBD using CodeIgniter 4 and Laravel.',
+        'Designed and maintained RESTful APIs ensuring seamless data transmission for high-traffic mobile applications.',
+        'Managed database architecture and optimized SQL queries, significantly reducing API latency.',
+        'Worked closely with frontend and DevOps teams to deliver scalable API integrations and deployment workflows.'
       ],
     },
     {
@@ -85,9 +84,8 @@ const Experience = () => {
       period: 'Dec 2021 – Apr 2022',
       location: 'Dhaka, Bangladesh',
       achievements: [
-        'Provided full-stack development support for internal enterprise tools.',
-        'Handled backend integration for responsive client-facing web apps.',
-        'Managed server deployment workflows and CI/CD pipelines.'
+        'Provided full-stack development support and integrated server-side logic with responsive frontend interfaces.',
+        'Managed server deployment workflows and supported CI/CD pipeline implementations.'
       ],
     },
   ];

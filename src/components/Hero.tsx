@@ -31,8 +31,8 @@ const Hero = () => {
           </h1>
 
           <p className="text-lg md:text-2xl text-[var(--text-muted)] max-w-3xl mx-auto mb-12 leading-relaxed font-medium">
-            Senior Backend Software Engineer focused on <span className="text-[var(--text)]">Distributed Systems</span>, 
-            <span className="text-[var(--text)]"> Multi-Tenant Architectures</span>, and <span className="text-[var(--text)]">Cloud Infrastructure</span>.
+            Backend Software Engineer focused on <span className="text-[var(--text)]">Scalable SaaS Platforms</span>, 
+            <span className="text-[var(--text)]"> Multi-Tenant Architectures</span>, and <span className="text-[var(--text)]">AWS Cloud Infrastructure</span>.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
