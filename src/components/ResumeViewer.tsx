@@ -24,7 +24,7 @@ const ResumeViewer = () => {
     
     // Improved options for better text rendering and layout preservation
     const opt = {
-      margin: [15, 15, 15, 15] as [number, number, number, number],
+      margin: [15, 15, 15, 15],
       filename: 'Athiqul_Hasan_Momin_Resume.pdf',
       image: { type: 'jpeg', quality: 1 },
       html2canvas: { 
@@ -37,7 +37,7 @@ const ResumeViewer = () => {
       },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
       pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
-    };
+    } as const;
 
     try {
       await html2pdf().set(opt).from(element).save();
