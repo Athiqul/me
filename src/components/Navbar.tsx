@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
-import { Sun, Moon, FileText, Menu, X } from 'lucide-react';
+import { FileText, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
@@ -35,10 +35,9 @@ const Navbar = () => {
   ];
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'py-3 glass shadow-2xl shadow-black/5' : 'py-6 bg-transparent'
-      }`}
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'py-3 glass shadow-2xl shadow-black/5' : 'py-6 bg-transparent'
+        }`}
     >
       {/* Scroll Progress Bar */}
       <motion.div className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary origin-left z-50" style={{ scaleX }} />
@@ -52,22 +51,21 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center gap-8">
           {!isResumePage && navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href} 
+            <a
+              key={link.name}
+              href={link.href}
               className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors relative group"
             >
               {link.name}
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all group-hover:w-full"></span>
             </a>
           ))}
-          <Link 
-            to="/resume" 
-            className={`text-xs font-black uppercase tracking-[0.2em] flex items-center gap-2 px-6 py-2.5 rounded-full transition-all ${
-              isResumePage 
-                ? 'bg-primary text-white shadow-lg shadow-primary/30' 
+          <Link
+            to="/resume"
+            className={`text-xs font-black uppercase tracking-[0.2em] flex items-center gap-2 px-6 py-2.5 rounded-full transition-all ${isResumePage
+                ? 'bg-primary text-white shadow-lg shadow-primary/30'
                 : 'bg-[var(--border)] hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/30'
-            }`}
+              }`}
           >
             <FileText size={14} /> Resume
           </Link>
@@ -75,7 +73,7 @@ const Navbar = () => {
 
         <div className="flex items-center gap-4">
           <div className="h-6 w-[1px] bg-[var(--border)] mx-2 hidden sm:block"></div>
-          
+
           <div className="hidden sm:flex items-center gap-3">
             <a href="https://github.com/Athiqul" target="_blank" rel="noopener noreferrer" className="p-2 text-[var(--text-muted)] hover:text-primary transition-colors">
               <FaGithub size={20} />
@@ -86,7 +84,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <button 
+          <button
             className="lg:hidden p-2 text-[var(--text)]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -97,24 +95,24 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="absolute top-full left-0 right-0 bg-[var(--bg)] border-b border-[var(--border)] p-8 lg:hidden shadow-2xl"
         >
           <div className="flex flex-col gap-6">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
+              <a
+                key={link.name}
+                href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-lg font-bold tracking-tight hover:text-primary transition-colors"
               >
                 {link.name}
               </a>
             ))}
-            <Link 
-              to="/resume" 
+            <Link
+              to="/resume"
               onClick={() => setIsMobileMenuOpen(false)}
               className="btn-primary w-full"
             >

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Server, ArrowRight } from 'lucide-react';
-import { FaGithub } from 'react-icons/fa6';
 import SectionHeader from './SectionHeader';
 import ProjectModal from './ProjectModal';
 
