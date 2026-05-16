@@ -29,16 +29,7 @@
     --card: #ffffff;
     --primary: #3b82f6;
     --primary-foreground: #ffffff;
-  }
-
-  .dark {
-    --bg: #030303;
-    --text: #f3f4f6;
-    --text-muted: #9ca3af;
-    --border: #1a1a1a;
-    --card: #0a0a0a;
-    --primary: #3b82f6;
-    --primary-foreground: #ffffff;
+    --secondary: #8b5cf6;
   }
 
   body {

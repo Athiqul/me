@@ -3,7 +3,7 @@ import { Calendar, MapPin, Briefcase } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 
 const ExperienceItem = ({ role, company, period, location, achievements, index }: { role: string, company: string, period: string, location: string, achievements: string[], index: number }) => (
-  <motion.div 
+  <motion.div
     initial={{ opacity: 0, x: -20 }}
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true }}
@@ -12,12 +12,12 @@ const ExperienceItem = ({ role, company, period, location, achievements, index }
   >
     {/* Timeline Line */}
     <div className="absolute left-[15px] top-0 bottom-0 w-[2px] bg-[var(--border)] group-last:bottom-auto group-last:h-8"></div>
-    
+
     {/* Timeline Dot */}
     <div className="absolute left-0 top-0 w-[32px] h-[32px] rounded-full bg-[var(--bg)] border-2 border-[var(--border)] group-hover:border-primary transition-colors flex items-center justify-center z-10 shadow-sm">
       <Briefcase size={14} className="text-[var(--text-muted)] group-hover:text-primary transition-colors" />
     </div>
-    
+
     <div className="flex flex-col gap-3">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <h3 className="text-2xl font-bold tracking-tight text-[var(--text)] group-hover:text-primary transition-colors">
@@ -27,7 +27,7 @@ const ExperienceItem = ({ role, company, period, location, achievements, index }
           <Calendar size={14} /> {period}
         </span>
       </div>
-      
+
       <div className="flex items-center gap-4 font-semibold text-lg">
         <span className="text-primary">{company}</span>
         <span className="w-1.5 h-1.5 rounded-full bg-[var(--border)]"></span>
@@ -35,7 +35,7 @@ const ExperienceItem = ({ role, company, period, location, achievements, index }
           <MapPin size={14} /> {location}
         </span>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 mt-4">
         {achievements.map((achievement, idx) => (
           <div key={idx} className="flex gap-3 text-[var(--text-muted)] leading-relaxed text-sm">
@@ -92,8 +92,8 @@ const Experience = () => {
 
   return (
     <section id="experience" className="section-padding container-wide">
-      <SectionHeader 
-        title="Engineering Journey" 
+      <SectionHeader
+        title="Engineering Journey"
         subtitle="Over 4 years of professional experience building high-performance systems and leading technical initiatives."
       />
 

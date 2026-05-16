@@ -75,7 +75,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="card bg-[#0a0a0c] p-10 md:p-12"
+          className="card bg-white p-10 md:p-12"
         >
           <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">

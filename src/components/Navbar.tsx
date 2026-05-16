@@ -5,7 +5,6 @@ import { Sun, Moon, FileText, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
-  const [isDark, setIsDark] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -19,19 +18,12 @@ const Navbar = () => {
   });
 
   useEffect(() => {
-    document.documentElement.classList.add('light');
-    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle('dark');
-  };
 
   const navLinks = [
     { name: 'Architecture', href: '#about' },
@@ -82,14 +74,6 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <button 
-            onClick={toggleTheme}
-            className="p-2.5 rounded-xl hover:bg-[var(--border)] transition-all active:scale-90"
-            aria-label="Toggle theme"
-          >
-            {isDark ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-          
           <div className="h-6 w-[1px] bg-[var(--border)] mx-2 hidden sm:block"></div>
           
           <div className="hidden sm:flex items-center gap-3">

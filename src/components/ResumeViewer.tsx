@@ -39,11 +39,11 @@ const ResumeViewer = () => {
   if (!isReady) return null;
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-[#0a0a0c] pt-24 pb-12 px-4 sm:px-6 transition-colors duration-300">
+    <div className="min-h-screen bg-gray-50 pt-24 pb-12 px-4 sm:px-6 transition-colors duration-300">
       <div className="max-w-4xl mx-auto">
         {/* Navigation / Actions */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-          <Link to="/" className="btn-secondary py-2 flex items-center gap-2 hover:bg-gray-200 dark:hover:bg-white/10">
+          <Link to="/" className="btn-secondary py-2 flex items-center gap-2 hover:bg-gray-200">
             <ChevronLeft size={18} /> Back to Portfolio
           </Link>
           <div className="flex gap-3">
@@ -72,7 +72,7 @@ const ResumeViewer = () => {
         )}
 
         {/* Resume Content Container (Markdown View) */}
-        <div className="shadow-2xl rounded-xl overflow-hidden border border-gray-200 dark:border-white/5 bg-white p-12 md:p-20 text-black">
+        <div className="shadow-2xl rounded-xl overflow-hidden border border-gray-200 bg-white p-12 md:p-20 text-black">
           <div className="prose-custom">
             <ReactMarkdown>{markdown}</ReactMarkdown>
           </div>
